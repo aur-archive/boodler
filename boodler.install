@@ -1,0 +1,16 @@
+pkgname=boodler
+
+post_install() {
+  cat << _EOF 
+
+==> Here's a 2-liner to download and install all boodler modules from boodler.org:
+==> 
+==> wget -e robots=off -r -l inf -N --no-parent --reject 'index.html*' http://boodler.org/lib/
+==> find boodler.org/ -name '*.boop'|xargs -n 1 boodle-mgr install
+
+_EOF
+}
+
+post_upgrade() {
+  post_install $1
+}
